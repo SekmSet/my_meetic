@@ -25,8 +25,6 @@ class SearchCommand extends BaseCommand
             }
         }
 
-        var_dump($loisirs);
-        var_dump($array_ville);
         if(!empty($cp)){
             $array_filter[]= "code_postal = :cp";
             $array_execute[':cp'] = $cp;
