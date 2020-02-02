@@ -66,7 +66,7 @@ class User extends BaseController
                 $errors[] = 'Il faut au moins un loisir';
             } elseif (!$this->isMajor($birthday)) {
                 $errors[] = 'Il faut au moins 18 ans';
-            } elseif (strlen($pwd) <= 8 && strlen($pwd) >= 16) {
+            } elseif (strlen($pwd) < 8 || strlen($pwd) > 16) {
                 $errors[] = 'Votre mot de passe doit contenir entre 8 et 16 caractères';
             }
 
@@ -75,7 +75,7 @@ class User extends BaseController
             if (count($date_array) !== 3) {
                 $errors[] = 'Format date d\'anniversaire invalide';
             } else {
-                $tmp = checkdate((int)$date_array[2], (int)$date_array[1], (int)$date_array[0]);
+                $tmp = checkdate((int)$date_array[1], (int)$date_array[2], (int)$date_array[0]);
                 if ($tmp !== true) {
                     $errors[] = 'Format date pas conforme';
                 }
@@ -144,7 +144,7 @@ class User extends BaseController
             if (count($date_array) !== 3) {
                 $errors[] = 'Format date d\'anniversaire invalide';
             } else {
-                $tmp = checkdate((int)$date_array[2], (int)$date_array[1], (int)$date_array[0]);
+                $tmp = checkdate((int)$date_array[1], (int)$date_array[2], (int)$date_array[0]);
                 if ($tmp !== true) {
                     $errors[] = 'Format date pas conforme';
                 }
@@ -152,7 +152,7 @@ class User extends BaseController
         }
 
         if(!empty($pwd)){
-            if(strlen($pwd)<=8 && strlen($pwd)>=16){
+            if(strlen($pwd)<8 || strlen($pwd)>16){
                 $errors[] = 'Votre mot de passe doit contenir entre 8 et 16 caractères';
             }
         }

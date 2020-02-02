@@ -6,21 +6,21 @@ $('#sub_ul_account').hide();
 $('#first_ul_member').hover(
 
     function(){
-        $('#sub_ul_member').show("slow");
+        $('#sub_ul_member').show();
     } ,
     function() {
-        $('#sub_ul_member').hide("slow");
+        $('#sub_ul_member').hide();
     }
 );
 
 $('#first_ul_account').hover(
 
     function(){
-        $('#sub_ul_account').show("slow");
+        $('#sub_ul_account').show();
     } ,
 
     function() {
-        $('#sub_ul_account').hide("slow");
+        $('#sub_ul_account').hide();
     }
 );
 /***************** input type range **********************************************************************/

@@ -49,15 +49,24 @@ class Router
                 $controller_login->delete();
                 break;
             case '/account' :
+                $this->redirect_not_login();
                 $controller_account = new User();
                 $controller_account->account();
                 break;
             case '/search' :
+                $this->redirect_not_login();
                 $controller_search = new Search();
                 $controller_search->search_membre();
                 break;
             default:
                 echo 'ERROR 404 - Page introuvable';
+        }
+    }
+
+    private function redirect_not_login(){
+        if(empty($_SESSION['user'])) {
+            header('Location: http://localhost:8080/login');
+            die;
         }
     }
 }

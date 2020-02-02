@@ -12,7 +12,7 @@
         <h1 class="title">My Meetic </h1>
         <nav>
             <div class="row">
-                <div class="container col-md-12 offset-md-3 nav_head">
+                <div class="container col-md-10 offset-md-2 nav_head">
                     <ul class="list-inline">
                         <li class="list-inline-item"><a class="py-2 d-none d-md-inline-block" href="/">Accueil</a></li>
                         <?php if(empty($_SESSION['user'])){ ?>

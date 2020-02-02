@@ -9,27 +9,31 @@
                             Accueil
                         </a>
                     </li>
-                    <li>
-                        <a  class="text-muted"  href="search.php">
-                            Recherche
-                        </a>
-                    </li>
 
-                    <li>
-                        <a class="text-muted"  href="login">
-                            Connexion
-                        </a>
-                    </li>
-                    <li>
-                        <a class="text-muted"  href="register">
-                            Inscription
-                        </a>
-                    </li>
-                    <li>
-                        <a class="text-muted"  href="account">
-                            Mon espace
-                        </a>
-                    </li>
+                    <?php if(empty($_SESSION['user'])){ ?>
+                        <li>
+                            <a class="text-muted"  href="login">
+                                Connexion
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-muted"  href="register">
+                                Inscription
+                            </a>
+                        </li>
+                    <?php } else { ?>
+                        <li>
+                            <a class="text-muted"  href="search">
+                                Recherche
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-muted"  href="account">
+                                Mon espace
+                            </a>
+                        </li>
+                    <?php } ?>
+
                 </ul>
             </div>
             <div class="col-6 col-md">
@@ -48,7 +52,7 @@
                     </li>
 
                     <li>
-                        <a href="contact">
+                        <a href="#">
                             Formulaire de contact
                         </a>
                     </li>

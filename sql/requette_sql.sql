@@ -1,19 +1,22 @@
 # CREATE BASE DE DONNEE MY_MEETIC
-CREATE DATABASE my_meetic;
+CREATE DATABASE if not exists my_meetic;
 
 #CREATE TABLE utilisateur
-CREATE TABLE my_meetic.`utilisateur`
-  ( `id` INT  PRIMARY KEY AUTO_INCREMENT,
-    `prenom` VARCHAR(500) NOT NULL ,
-    `nom` VARCHAR(500) NOT NULL ,
-    `date_naissance` DATE NOT NULL ,
-    `mail` VARCHAR(500) NOT NULL ,
-    `login` VARCHAR(500) NOT NULL ,
-    `mdp` VARCHAR(500) NOT NULL,
-    `adress` VARCHAR(500) NOT NULL ,
-    `code_postal` VARCHAR(500) NOT NULL ,
-    `sexe` INT NOT NULL
-  );
+CREATE TABLE my_meetic.`utilisateur` (
+   `id` int(11) NOT NULL AUTO_INCREMENT,
+   `prenom` varchar(500) NOT NULL,
+   `nom` varchar(500) NOT NULL,
+   `date_naissance` date NOT NULL,
+   `mail` varchar(500) NOT NULL,
+   `login` varchar(500) NOT NULL,
+   `mdp` varchar(500) NOT NULL,
+   `ville` varchar(500) NOT NULL,
+   `code_postal` varchar(500) NOT NULL,
+   `sexe` varchar(500) NOT NULL,
+   `adress` varchar(500) DEFAULT NULL,
+   `actif` int(11) NOT NULL DEFAULT 1,
+   PRIMARY KEY (`id`)
+);
 
 #CREATE TABLE loisir
 create table my_meetic.`loisir` (
@@ -23,23 +26,21 @@ create table my_meetic.`loisir` (
 
 #CREATE TABLE loisir
 create table my_meetic.`user_loisir` (
-    `id`int PRIMARY KEY auto_increment,
-    `id_loisir` int not null references my_meetic.loisir(id),
-    `id_user` int not null references my_meetic.utilisateur(id)
+     `id` int(11) NOT NULL AUTO_INCREMENT,
+     `id_loisir` int(11) NOT NULL,
+     `id_user` int(11) NOT NULL,
+     `actif` int(11) NOT NULL DEFAULT 1,
+     PRIMARY KEY (`id`)
 );
-
-# Ajouter la colonne adresse à la table utilisateur
-alter table my_meetic.`utilisateur` add adress VARCHAR(500) NULL;
 
 #Ajout des loisirs 'de base' dans la table loisir
 insert into my_meetic.loisir (nom_loisir) values ('equitation'),('lecture'),('cinema'),('jeux-video'),
                                                  ('informatique'),('cuisine'),('danse');
 
-# Ajout de la colonne actif a la table user_loisir
-alter table user_loisir
-    add actif int default 1 not null;
 
-# Ajout de la colonne actif a la table utilisateur
-alter table utilisateur
-    add actif int default 1 not null;
+create unique index utilisateur_login_uindex
+    on my_meetic.utilisateur (login);
+
+create unique index utilisateur_mail_uindex
+    on my_meetic.utilisateur (mail);
 
