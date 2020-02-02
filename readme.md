@@ -1,19 +1,34 @@
+# My_meetic 
+
+### PHP version 
+
+```bash
+    7.1 minimum
+```
+
 ### installer composer sur mac
 
 ```bash
 brew install composer
 ```
 
-
 ### installer composer sur linux
+
 ```bash
 php composer-setup.php --install-dir=bin --filename=composer
 mv composer /usr/local/bin/composer
 ```
 
 ## Installer le projet
+
 ```bash
 composer install
+```
+
+## importer la base de donnée
+
+```bash
+       cf sql -> requette_sql.sql
 ```
 
 ### Lancer le serveur
@@ -29,14 +44,23 @@ CTRL C
 ```
 
 # Pour la base de donnée
+
 ## Table utilisateur
+
 ````bash
-    if ('sexe' === 1) -> l'utilisateur est une femme
-    if ('sexe' === 2) -> l'utilisateur est un homme
-    if ('sexe' === 0) -> Autre sexe
+    if ('sexe' === 'f') -> l'utilisateur est une femme
+    if ('sexe' === 'h') -> l'utilisateur est un homme
+    if ('sexe' === 'o') -> Autre sexe
 ````
 ### Savoir si l'utilisateur à supprimer son compte
+
 ```bash
-    if ('statut' === 0) -> Compte de l'utilisateur supprimer
-    if ('statut' === 1) -> Compte de l'utilisateur pas supprimer
+    if ('actif' === 0) -> Compte de l'utilisateur supprimer
+    if ('actif' === 1) -> Compte de l'utilisateur pas supprimer
+```
+### Savoir si le loisir est actif
+
+```bash
+    if ('actif' === 0) -> Compte de loisir pas actif
+    if ('actif' === 1) -> Compte de loisir actif
 ```
