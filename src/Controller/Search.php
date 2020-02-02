@@ -24,14 +24,7 @@ class Search extends BaseController
         $recherche = new SearchCommand();
 
         if(!empty($villes) || !empty($cp) || !empty($loisirs) || !empty($gender) || !empty($age_min) || !empty($age_max)){
-            $array_ville = explode(',',$villes);
-
-            foreach($array_ville as $key => $value) {
-                if(empty($value)) {
-                    unset($array_ville[$key]);
-                }
-            }
-            $results_all = $recherche->recherche_membre($array_ville,$cp,$loisirs,$gender,$age_min,$age_max);
+            $results_all = $recherche->recherche_membre($villes,$cp,$loisirs,$gender,$age_min,$age_max);
 
             if (empty($results_all)){
                 $errors[] = 'Malheureusement, aucun membre correspond à vos critères :\'(' ;

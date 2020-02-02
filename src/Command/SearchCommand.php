@@ -5,26 +5,15 @@ use PDO;
 
 class SearchCommand extends BaseCommand
 {
-    public function recherche_membre($array_ville,$loisirs,$cp,$gender,$age_min,$age_max){
+    public function recherche_membre($ville,$cp,$loisir,$gender,$age_min,$age_max){
 
         $array_filter = [];
         $array_execute = [];
 
-
-        if(!empty($array_ville)){
-            foreach ($array_ville as $key => $value){
-                $array_filter[]= "ville = :value";
-                $array_execute[':value'] = $value;
-            }
+        if(!empty($cp)){
+            $array_filter[]= "ville like binary :ville";
+            $array_execute[':ville'] = $ville;
         }
-
-        if(!empty($loisirs)){
-            foreach ($loisirs as $key => $value){
-                $array_filter[]= "ville = :value";
-                $array_execute[':value'] = $value;
-            }
-        }
-
         if(!empty($cp)){
             $array_filter[]= "code_postal = :cp";
             $array_execute[':cp'] = $cp;
@@ -40,22 +29,10 @@ class SearchCommand extends BaseCommand
             $array_execute[':age_max'] = $age_max;
         }
 
-        $filters = implode(' or ', $array_filter);
-
-//        var_dump($filters);
+        $filters = implode(' and ', $array_filter);
         $members = $this->db->prepare("select * from my_meetic.utilisateur where $filters;");
-//        $members->bindParam(':value', $value);
         $members->execute($array_execute);
 
         return $members->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function search_member_by_cities($villes){
-        echo 'bla bla bla';
-    }
-
-//    public function get_all_members(){
-//        $all_member = 'select * from my_meetic.utilisateur;';
-//        return $this->db->query($all_member,PDO::FETCH_ASSOC)->fetchAll();
-//    }
 }
