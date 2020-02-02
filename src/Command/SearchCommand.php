@@ -10,7 +10,7 @@ class SearchCommand extends BaseCommand
         $array_filter = [];
         $array_execute = [];
 
-        if(!empty($cp)){
+        if(!empty($ville)){
             $array_filter[]= "ville like binary :ville";
             $array_execute[':ville'] = $ville;
         }

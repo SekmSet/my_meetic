@@ -1,5 +1,17 @@
-### Installer le composer
+### installer composer sur mac
 
+```bash
+brew install composer
+```
+
+
+### installer composer sur linux
+```bash
+php composer-setup.php --install-dir=bin --filename=composer
+mv composer /usr/local/bin/composer
+```
+
+## Installer le projet
 ```bash
 composer install
 ```

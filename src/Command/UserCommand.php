@@ -18,7 +18,7 @@ class UserCommand extends BaseCommand
         $return_members->execute();
         $member_exist = $return_members->fetch(PDO::FETCH_ASSOC);
 
-        if ($this->verify_passeword($pwd,$member_exist['mdp']) === false){
+        if ($member_exist && $this->verify_passeword($pwd,$member_exist['mdp']) === false){
             return false;
         }
 
@@ -48,7 +48,7 @@ class UserCommand extends BaseCommand
 
     public function check_user_dispo($login, $mail){
 
-        $return_request = $this->db->prepare("select * from my_meetic.utilisateur where login = :login and 
+        $return_request = $this->db->prepare("select * from my_meetic.utilisateur where login = :login or 
                                                                                                     mail = :mail;");
         $return_request->bindParam(':login', $login);
         $return_request->bindParam(':mail', $mail);
@@ -72,7 +72,7 @@ class UserCommand extends BaseCommand
         $return_request->bindParam(':city', $city);
         $return_request->bindParam(':cp', $cp);
         $return_request->bindParam(':gender', $gender);
-        $return_request->bindParam("adress", $adress);
+        $return_request->bindParam(':adress', $adress);
 
         $return_request->execute();
 
@@ -155,13 +155,13 @@ class UserCommand extends BaseCommand
         $sql_request->execute();
     }
 
-    private function protected_passeword(string $pwd) {
+    private function protected_passeword($pwd) {
         $cost = 12;
         $crypt_pwd = password_hash($pwd,PASSWORD_BCRYPT, ["cost" => $cost]) ;
         return $crypt_pwd;
     }
 
-    private function verify_passeword(string $pwd, string $crypt_pwd) : bool{
+    private function verify_passeword($pwd, $crypt_pwd) : bool {
         $verif_pwd = password_verify($pwd, $crypt_pwd) ;
         return $verif_pwd;
     }
