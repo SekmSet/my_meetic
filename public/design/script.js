@@ -23,7 +23,7 @@ $('#first_ul_account').hover(
         $('#sub_ul_account').hide("slow");
     }
 );
-/***************** nput type range **********************************************************************/
+/***************** input type range **********************************************************************/
 var slider_min = $('#slider1_age_min');
 var slider_max = $('#slider1_age_max');
 
