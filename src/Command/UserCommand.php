@@ -62,7 +62,7 @@ class UserCommand extends BaseCommand
 
         $return_request = $this->db->prepare("insert into my_meetic.utilisateur (prenom, nom, date_naissance, mail,login, mdp, ville, code_postal,sexe, adress)
                                     values (:first_name, :name, :birthday, :mail, :login, :crypt_pwd, :city, :cp, :gender, :adress);");
-
+ 
         $return_request->bindParam(':first_name', $first_name);
         $return_request->bindParam(':name', $name);
         $return_request->bindParam(':birthday', $birthday);

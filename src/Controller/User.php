@@ -34,6 +34,7 @@ class User extends BaseController
     }
 
     public function register(){
+        
         $name = $_POST['name']??null;
         $first_name = $_POST['first_name']??null;
         $login = $_POST['user_name']??null;

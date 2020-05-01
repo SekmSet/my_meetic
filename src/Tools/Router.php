@@ -39,6 +39,7 @@ class Router
                 $controller_login = new User();
                 $controller_login->login();
                 break;
+
             case '/logout' :
                 $controller_login = new User();
                 $controller_login->logout();
@@ -48,16 +49,19 @@ class Router
                 $controller_login = new User();
                 $controller_login->delete();
                 break;
+
             case '/account' :
                 $this->redirect_not_login();
                 $controller_account = new User();
                 $controller_account->account();
                 break;
+
             case '/search' :
                 $this->redirect_not_login();
                 $controller_search = new Search();
                 $controller_search->search_membre();
                 break;
+                
             default:
                 echo 'ERROR 404 - Page introuvable';
         }

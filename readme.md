@@ -6,61 +6,76 @@
     7.1 minimum
 ```
 
-### installer composer sur mac
+### Install composer on Mac 
 
 ```bash
-brew install composer
+    brew install composer
 ```
 
-### installer composer sur linux
+### Install composer on Linux
 
 ```bash
-php composer-setup.php --install-dir=bin --filename=composer
-mv composer /usr/local/bin/composer
+    php composer-setup.php --install-dir=bin --filename=composer
+    mv composer /usr/local/bin/composer
 ```
 
-## Installer le projet
+## Install the project
 
 ```bash
-composer install
+    composer install
 ```
 
-## importer la base de donnée
+## Import the database 
 
 ```bash
-       cf sql -> requette_sql.sql
+    cf sql -> requette_sql.sql
 ```
 
-### Lancer le serveur
+### Launch the server 
 
 ```bash
-php -S localhost:8080 -t public
+    php -S localhost:8080 -t public
 ```
 
-### Quitter le serveur
+### Quitte le serveur
 
 ```bash
-CTRL C
+    CTRL C
 ```
 
-# Pour la base de donnée
+# For the database 
+
+## Connexion on your database
+
+````bash
+    Change the username and password in src > Tools > Database.php 
+    and DSN if you don't use MySql or MariaDB
+````
 
 ## Table utilisateur
 
 ````bash
-    if ('sexe' === 'f') -> l'utilisateur est une femme
-    if ('sexe' === 'h') -> l'utilisateur est un homme
-    if ('sexe' === 'o') -> Autre sexe
+    if ('sexe' === 'f') -> The user is a woman
+    if ('sexe' === 'h') -> The user is a man
+    if ('sexe' === 'o') -> Other sex
 ````
-### Savoir si l'utilisateur à supprimer son compte
+### Know if the user delete his account
 
 ```bash
-    if ('actif' === 0) -> Compte de l'utilisateur supprimer
-    if ('actif' === 1) -> Compte de l'utilisateur pas supprimer
+    if ('actif' === 0) -> The user delete his account
+    if ('actif' === 1) -> The user don't  delete his account
 ```
-### Savoir si le loisir est actif
+### Know if the user's hobbie is active
 
 ```bash
-    if ('actif' === 0) -> Compte de loisir pas actif
-    if ('actif' === 1) -> Compte de loisir actif
+    if ('actif' === 0) -> This hobbie isn't active
+    if ('actif' === 1) -> This hobbie is active
 ```
+
+# Website preview
+
+![my_meetic](.github/preview/my_meetic_home_page.png "Home page preview")
+![my_meetic](.github/preview/my_meetic_login_page.png "Login page preview")
+![my_meetic](.github/preview/my_meetic_register_page.png "Register page preview")
+![my_meetic](.github/preview/my_meetic_account_page.png "Progil page preview")
+![my_meetic](.github/preview/my_meetic_search_page.png "Search page preview")
